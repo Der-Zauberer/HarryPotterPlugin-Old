@@ -1,0 +1,16 @@
+main: harrypotter.main.HarryPotterPlugin
+name: HarryPotterPlugin
+version: 1.0
+author: Der_Zauberer
+api-version: 1.14
+
+commands:
+  harrypotter:
+    desciption: Open a menu with Harry Potter items
+    usage: /<command>
+    permission: harrypotter.items
+    
+permissions:
+  harrypotter.items:
+    description: Open a menu with Harry Potter items
+    default: op
