@@ -1,5 +1,6 @@
 package harrypotter.utilities;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -62,6 +63,14 @@ public class ItemBuilder {
 		this.lore = lore;
 	}
 	
+	public void setLore(String lore[]) {
+		List<String> itemlore = new ArrayList<String>();
+		for (int i = 0; i < lore.length; i++) {
+			itemlore.add(lore[i]);
+		}
+		this.lore = itemlore;
+	}
+	
 	public List<String> getLore() {
 		return lore;
 	}
@@ -116,6 +125,16 @@ public class ItemBuilder {
 			return buildItem();
 		}
 		return itemstack;
+	}
+	
+	public static void setItemLore(ItemStack itemstack, String args[]) {
+		ItemMeta itemmeta = itemstack.getItemMeta();
+		ArrayList<String> lore = new ArrayList<String>();
+		for (int i = 0; i < args.length; i++) {
+			lore.add(args[i]);
+		}
+		itemmeta.setLore(lore);
+		itemstack.setItemMeta(itemmeta);
 	}
 
 }

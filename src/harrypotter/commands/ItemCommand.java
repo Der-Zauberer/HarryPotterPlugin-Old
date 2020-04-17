@@ -4,11 +4,10 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-
 import harrypotter.handler.ItemHandler;
 import harrypotter.utilities.ItemMenu;
 import harrypotter.utilities.PlayerInventory;
+import harrypotter.utilities.UsableItem;
 
 public class ItemCommand implements CommandExecutor {
 
@@ -18,8 +17,8 @@ public class ItemCommand implements CommandExecutor {
 			PlayerInventory playerinventory = new PlayerInventory((Player) sender, 36, "Harry Potter");
 			ItemMenu itemmenu = new ItemMenu();
 			int counter = 0;
-			for(ItemStack itemstack : ItemHandler.getItems()) {
-				itemmenu.addItem(counter, itemstack);
+			for(UsableItem usableitem : ItemHandler.getUsableitems()) {
+				itemmenu.addItem(counter, usableitem.getItem());
 				counter++;
 			}
 			playerinventory.setItemMenu(itemmenu);

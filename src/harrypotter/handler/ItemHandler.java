@@ -7,42 +7,37 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-import harrypotter.utilities.ItemFunction;
+import harrypotter.utilities.UsableItem;
 
 public class ItemHandler implements Listener {
 	
-	private static ArrayList<ItemStack> items = new ArrayList<>();
-	private static ArrayList<ItemFunction> itemfunctions = new ArrayList<>();
+	private static ArrayList<UsableItem> usableitems = new ArrayList<>();
 	
-	public static void registerItem(ItemStack itemstack) {
-		items.add(itemstack);
+	public static void registerItem(UsableItem usableitem) {
+		usableitems.add(usableitem);
 	}
 	
-	public static ItemStack getItem(String name) {
+	public static ArrayList<UsableItem> getUsableitems() {
+		return usableitems;
+	}
+	
+	public static UsableItem getItem(String name) {
 		String realname = ChatColor.stripColor(name);
 		String namewithoutspaces = realname.replace("_", " ");
-		for (ItemStack item : items) {
-			String itemname = ChatColor.stripColor(item.getItemMeta().getDisplayName());
+		for(UsableItem usableitem : usableitems) {
+			String itemname = ChatColor.stripColor(usableitem.getItem().getItemMeta().getDisplayName());
 			if(itemname.equalsIgnoreCase(name) || itemname.equalsIgnoreCase(namewithoutspaces)) {
-				return item;
+				return usableitem;
 			}
 		}
 		return null;
 	}
 	
-	public static ArrayList<ItemStack> getItems() {
-		return items;
-	}
-	
-	public static void registerItemFunction(ItemFunction itemfunction) {
-		itemfunctions.add(itemfunction);
-	}
-	
-	public static ItemFunction getItemFunction(ItemStack itemstack) {
-		for (ItemFunction itemfunction : itemfunctions) {
-			if(itemfunction.getType().equals(itemstack.getType())) {
-				if(itemstack.getItemMeta().hasCustomModelData() && itemfunction.getCustomModelData() == itemstack.getItemMeta().getCustomModelData()) {
-					return itemfunction;
+	public static UsableItem getItemFunction(ItemStack itemstack) {
+		for (UsableItem usableitem : usableitems) {
+			if(usableitem.getItem().getType().equals(itemstack.getType())) {
+				if(itemstack.getItemMeta().hasCustomModelData() && usableitem.getItem().getItemMeta().getCustomModelData() == itemstack.getItemMeta().getCustomModelData()) {
+					return usableitem;
 				}
 			}
 		}
@@ -52,7 +47,7 @@ public class ItemHandler implements Listener {
 	@EventHandler
 	public void onInteract(PlayerInteractEvent event) {
 		ItemStack itemstack = event.getPlayer().getInventory().getItemInMainHand();
-		ItemFunction itemfunction = getItemFunction(itemstack);
+		UsableItem itemfunction = getItemFunction(itemstack);
 		if(itemfunction != null) {
 			itemfunction.onItemUse(event.getPlayer(), itemstack, event.getAction());
 		}
