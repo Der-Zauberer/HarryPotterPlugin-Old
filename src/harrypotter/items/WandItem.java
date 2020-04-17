@@ -14,6 +14,7 @@ public class WandItem implements UsableItem {
 	
 	private Player owner;
 	
+	@Override
 	public ItemStack getItem() {
 		ItemBuilder itembuilder = new ItemBuilder(ChatColor.RESET + "Wand", Material.CARROT_ON_A_STICK);
 		itembuilder.setCustomModelData(1);
