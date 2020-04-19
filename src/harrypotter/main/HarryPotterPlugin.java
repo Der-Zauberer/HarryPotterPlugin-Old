@@ -10,23 +10,21 @@ import harrypotter.items.WandItem;
 
 public class HarryPotterPlugin extends JavaPlugin {
 	
-	private WandItem wanditem = new WandItem();
-	
 	@Override
 	public void onEnable() {
 		getCommand("harrypotter").setExecutor(new ItemCommand());
 		Bukkit.getPluginManager().registerEvents(new ItemHandler(), this);
 		registerItems();
-		createCraftingRecipies();
+		registerCraftingRecipies();
 	}
 	
 	private void registerItems() {
-		ItemHandler.registerItem(wanditem);
+		ItemHandler.registerItem(new WandItem());
 	}
 	
 	@SuppressWarnings("deprecation")
-	private void createCraftingRecipies() {
-		ShapedRecipe shapedrecipe = new ShapedRecipe(wanditem.getItem()).shape("xxd","xsx","sxx").setIngredient('x', Material.AIR).setIngredient('s', Material.STICK).setIngredient('d', Material.DIAMOND);
+	private void registerCraftingRecipies() {
+		ShapedRecipe shapedrecipe = new ShapedRecipe(new WandItem().getItem()).shape("xxd","xsx","sxx").setIngredient('x', Material.AIR).setIngredient('s', Material.STICK).setIngredient('d', Material.DIAMOND);
 		getServer().addRecipe(shapedrecipe);
 	}
 

@@ -28,7 +28,7 @@ public class WandItem implements UsableItem {
 		if(action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
 			if(owner == null) {
 				owner = player;
-				String lore[] = {"", ChatColor.RESET + "Owner:", ChatColor.GRAY + "Der_Zauberer"};
+				String lore[] = {"", ChatColor.RESET + "Owner:", ChatColor.GRAY + player.getName()};
 				ItemBuilder.setItemLore(itemstack, lore);
 			} else if(owner == player) {
 				player.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 20, 3));
