@@ -6,7 +6,7 @@ import org.bukkit.inventory.ItemStack;
 
 public interface UsableItem {
 	
-	public abstract void onItemUse(Player player, ItemStack itemstack, Action action);
 	public abstract ItemStack getItem();
+	public abstract void onItemUse(Player player, ItemStack itemstack, Action action);
 
 }

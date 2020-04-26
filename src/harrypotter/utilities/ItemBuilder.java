@@ -103,7 +103,7 @@ public class ItemBuilder {
 	public ItemStack buildItem() {
 		ItemStack itemstack = new ItemStack(material);
 		ItemMeta itemmeta = itemstack.getItemMeta();
-		itemmeta.setDisplayName(displayname);
+		itemmeta.setDisplayName(ChatColor.RESET + displayname);
 		if(lore != null) {
 			itemmeta.setLore(lore);
 		}
