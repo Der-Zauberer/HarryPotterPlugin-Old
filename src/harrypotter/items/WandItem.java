@@ -18,7 +18,7 @@ public class WandItem implements UsableItem {
 	public ItemStack getItem() {
 		ItemBuilder itembuilder = new ItemBuilder(ChatColor.RESET + "Wand", Material.CARROT_ON_A_STICK);
 		itembuilder.setCustomModelData(1);
-		String lore[] = {"", ChatColor.GRAY + "Right-click item to set user!"};
+		String lore[] = {"", ChatColor.GRAY + "Right-click to set user!"};
 		itembuilder.setLore(lore);
 		return itembuilder.buildItem();
 	}

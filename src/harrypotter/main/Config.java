@@ -7,17 +7,26 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
+import harrypotter.handler.SpellHandler.Spell;
+
 public class Config {
 	
 	private static File file = new File("plugins/HarryPotterPlugin", "config.yml");
 	public static FileConfiguration config = YamlConfiguration.loadConfiguration(file);
 	
-	public enum Spell{AGUAMENTI, EXPELLIARMUS, INCENDIO, LUMOS, NOX, STUPOR};
-	
 	public Config() {
 		if(!file.exists()) {
+			config.set("alerts", true);
 			saveConfig();
 		}
+	}
+	
+	public static void setAlertEnabled(boolean enabled) {
+		config.set("alerts", enabled);
+	}
+	
+	public static boolean areAlertsEnabled() {
+		return config.getBoolean("alerts");
 	}
 	
 	public static void addSpellToPlayer(Player player, Spell spell) {
