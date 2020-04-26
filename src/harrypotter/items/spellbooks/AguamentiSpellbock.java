@@ -4,7 +4,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
 import org.bukkit.inventory.ItemStack;
-
 import harrypotter.utilities.ItemBuilder;
 import harrypotter.utilities.UsableItem;
 

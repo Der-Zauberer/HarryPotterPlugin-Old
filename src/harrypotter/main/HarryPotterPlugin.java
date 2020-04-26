@@ -18,6 +18,7 @@ public class HarryPotterPlugin extends JavaPlugin {
 	
 	@Override
 	public void onEnable() {
+		new Config();
 		getCommand("harrypotter").setExecutor(new ItemCommand());
 		Bukkit.getPluginManager().registerEvents(new ItemHandler(), this);
 		registerItems();
