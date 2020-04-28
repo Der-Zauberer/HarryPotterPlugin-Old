@@ -1,7 +1,9 @@
 package harrypotter.main;
 
+import java.util.ArrayList;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 import harrypotter.commands.ItemCommand;
@@ -13,16 +15,31 @@ import harrypotter.items.spellbooks.IncendioSpellbock;
 import harrypotter.items.spellbooks.LumosSpellBock;
 import harrypotter.items.spellbooks.NoxSpellbock;
 import harrypotter.items.spellbooks.StuporSpellbock;
+import harrypotter.listener.ProjectileListener;
 
 public class HarryPotterPlugin extends JavaPlugin {
+	
+	public static HarryPotterPlugin plugin;
+	
+	private static ArrayList<Player> projectilePlayers = new ArrayList<>();
 	
 	@Override
 	public void onEnable() {
 		new Config();
-		getCommand("harrypotter").setExecutor(new ItemCommand());
-		Bukkit.getPluginManager().registerEvents(new ItemHandler(), this);
+		plugin = this;
+		registerCommands();
+		registerEvents();
 		registerItems();
 		registerCraftingRecipies();
+	}
+	
+	private void registerCommands() {
+		getCommand("harrypotter").setExecutor(new ItemCommand());
+	}
+	
+	private void registerEvents() {
+		Bukkit.getPluginManager().registerEvents(new ItemHandler(), this);
+		Bukkit.getPluginManager().registerEvents(new ProjectileListener(), this);
 	}
 	
 	private void registerItems() {
@@ -40,5 +57,8 @@ public class HarryPotterPlugin extends JavaPlugin {
 		ShapedRecipe shapedrecipe = new ShapedRecipe(new WandItem().getItem()).shape("xxd","xsx","sxx").setIngredient('x', Material.AIR).setIngredient('s', Material.STICK).setIngredient('d', Material.DIAMOND);
 		getServer().addRecipe(shapedrecipe);
 	}
-
+	
+	public static ArrayList<Player> getProjectilePlayers() {
+		return projectilePlayers;
+	}
 }
