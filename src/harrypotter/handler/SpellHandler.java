@@ -3,7 +3,7 @@ package harrypotter.handler;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import harrypotter.main.Config;
-import net.md_5.bungee.api.ChatColor;
+import org.bukkit.ChatColor;
 
 public class SpellHandler {
 	
@@ -29,5 +29,4 @@ public class SpellHandler {
 	public static boolean hasPlayerSpell(Player player, Spell spell) {
 		return Config.hasPlayerSpell(player, spell);
 	}
-
 }
