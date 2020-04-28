@@ -1,7 +1,9 @@
 main: harrypotter.main.HarryPotterPlugin
 name: HarryPotterPlugin
 version: 1.0
-author: Der_Zauberer
+authors:
+  - Der_Zauberer
+  - LeF2019
 api-version: 1.14
 
 commands:
