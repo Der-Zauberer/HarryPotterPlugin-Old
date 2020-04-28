@@ -16,6 +16,7 @@ public class Config {
 	
 	public Config() {
 		if(!file.exists()) {
+			config.set("language", "de");
 			config.set("alerts", true);
 			saveConfig();
 		}
@@ -52,4 +53,21 @@ public class Config {
 		}
 	}
 
+	public static File getLanguageFile() {
+		File file = new File("plugins/HarryPotterPlugin", "messages_" + config.getString("language").toLowerCase() + ".yml");
+		if (file.exists()) {
+			return file;
+		} else {
+			return null;
+		}
+	}
+
+	public static FileConfiguration getLanguage() {
+		File file = new File("plugins/HarryPotterPlugin", "messages_" + config.getString("language").toLowerCase() + ".yml");
+		if (file.exists()) {
+			return YamlConfiguration.loadConfiguration(file);
+		} else {
+			return null;
+		}
+	}
 }
