@@ -42,7 +42,7 @@ public class ChatMessage {
 	@SuppressWarnings("deprecation")
 	public static void sendServerBroadcastMessage(String message) {
 		for (Player player : Bukkit.getOnlinePlayers()) {
-			player.sendMessage(servername + messagecolor + message);
+			player.sendMessage("§7[§bRundruf§7]" + messagecolor + message);
 		}
 		Bukkit.getConsoleSender().sendMessage(servername + messagecolor + message);
 	}

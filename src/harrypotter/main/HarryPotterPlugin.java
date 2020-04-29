@@ -26,7 +26,7 @@ public class HarryPotterPlugin extends JavaPlugin {
 	
 	private static ArrayList<Player> projectilePlayers = new ArrayList<>();
 
-	public static String prefix = "";
+	public static String prefix;
 	
 	@Override
 	public void onEnable() {
@@ -50,6 +50,7 @@ public class HarryPotterPlugin extends JavaPlugin {
 		prefix = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(Config.getLanguage().getString("prefix")));
 
 		plugin = this;
+		
 		registerCommands();
 		registerEvents();
 		registerItems();
