@@ -1,6 +1,5 @@
 package harrypotter.utilities;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +9,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class Lore {
 	
-	static List<String> loreList;
-	static ItemStack item;
+	private static List<String> loreList;
+	private static ItemStack item;
 	
 	private static Lore loreClass;
 	

@@ -31,23 +31,23 @@ public class LoreLine {
 	}
 	
 	public static void replace(String newText) {
-		List<String> entries = lore.getLoreList();
-		entries.set(lore.getLoreList().indexOf(text), newText);
+		List<String> entries = Lore.getLoreList();
+		entries.set(Lore.getLoreList().indexOf(text), newText);
 		ItemMeta meta = item.getItemMeta();
 		meta.setLore(entries);
 		item.setItemMeta(meta);
 	}
 	
 	public static void set(String newText) {
-		List<String> entries = lore.getLoreList();
-		entries.set(lore.getLoreList().indexOf(text), newText);
+		List<String> entries = Lore.getLoreList();
+		entries.set(Lore.getLoreList().indexOf(text), newText);
 		ItemMeta meta = item.getItemMeta();
 		meta.setLore(entries);
 		item.setItemMeta(meta);
 	}
 	
 	public static void clearLine() {
-		List<String> entries = lore.getLoreList();
+		List<String> entries = Lore.getLoreList();
 		entries.remove(text);
 		ItemMeta meta = item.getItemMeta();
 		meta.setLore(entries);
