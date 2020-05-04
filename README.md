@@ -1,4 +1,4 @@
-# HarryPotterPlugin
+<image src="images/HarryPotterPlugin.png" >
 
 Mods sind Client-Side und funktionieren manchmal garnicht auf Servern und man muss bei fast jedem Release fast alles umprogrammieren.
 Datapacks sind sehr eingeschränkt und funktionieren erst ab der Version 1.13.
