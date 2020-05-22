@@ -3,10 +3,12 @@ package harrypotter.items;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.WitherSkull;
 import org.bukkit.event.block.Action;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import harrypotter.main.HarryPotterPlugin;
 import harrypotter.utilities.ItemBuilder;
 import harrypotter.utilities.UsableItem;
 
@@ -32,6 +34,8 @@ public class WandItem implements UsableItem {
 				ItemBuilder.setItemLore(itemstack, lore);
 			} else if(owner == player) {
 				player.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 20, 3));
+				HarryPotterPlugin.getProjectilePlayers().add(player);
+				player.launchProjectile(WitherSkull.class, player.getVelocity());	
 			} else if(owner != player) {
 				return;
 			}

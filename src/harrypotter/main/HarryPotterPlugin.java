@@ -1,10 +1,7 @@
 package harrypotter.main;
 
 import java.util.ArrayList;
-import java.util.Objects;
-
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
@@ -31,26 +28,7 @@ public class HarryPotterPlugin extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		new Config();
-
-		if (Config.getLanguageFile() == null || !Config.getLanguageFile().exists()) {
-			Bukkit.getConsoleSender().sendMessage("[HarryPotter] Error while loading language file. Plugin is disabling ...");
-			Bukkit.getServer().getPluginManager().disablePlugin(this);
-		}
-
-		if (Config.getLanguage() == null) {
-			Bukkit.getConsoleSender().sendMessage("[HarryPotter] Error while loading language configuration. Plugin is disabling ...");
-			Bukkit.getServer().getPluginManager().disablePlugin(this);
-		}
-
-		if (Config.getLanguage().getString("prefix") == null) {
-			Bukkit.getConsoleSender().sendMessage("[HarryPotter] Error while loading prefix. Plugin is disabling ...");
-			Bukkit.getServer().getPluginManager().disablePlugin(this);
-		}
-
-		prefix = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(Config.getLanguage().getString("prefix")));
-
 		plugin = this;
-		
 		registerCommands();
 		registerEvents();
 		registerItems();
